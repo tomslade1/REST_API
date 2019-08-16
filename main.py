@@ -2,11 +2,21 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 from json import dumps
-from flask import jsonify
+
+# from flask_jsonpify import jsonify - works even when hashed out?!
 
 db_connect = create_engine('sqlite:///chinook.db')
 
 app = Flask(__name__)  # What are we doing to the Flask function?
+
+# Attempt 1 to get jsonify working - failed!
+# (https://flask.palletsprojects.com/en/1.1.x/api/#flask.json.jsonify)
+
+# app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+
+# Attempt 2 to get jsonify working - failed!
+# app.config['DEBUG'] = True
+
 api = Api(app)
 
 
